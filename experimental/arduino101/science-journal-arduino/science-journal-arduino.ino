@@ -9,6 +9,9 @@ BLEService whistlepunkService("555a0001-0aaa-467a-9538-01f0652c74e8"); // create
 // Must be 20 char long to accomodate full-size messages.
 const char *value = "                     ";
 
+String BleLongName = "Sci";
+bool serialConnected = false;
+
 BLECharacteristic valueCharacteristic("555a0003-0aaa-467a-9538-01f0652c74e8", BLENotify, value);
 
 #include "internal/ble_client.h"
@@ -62,12 +65,11 @@ void setup() {
   ble_addr_t _local_bda;
   char       _device_name[BLE_MAX_DEVICE_NAME+1];  
   ble_client_get_factory_config(&_local_bda, _device_name);
-  String name = "Sci";
-  name += String(_local_bda.addr[4], HEX);
-  name += String(_local_bda.addr[5], HEX);
+  BleLongName += String(_local_bda.addr[4], HEX);
+  BleLongName += String(_local_bda.addr[5], HEX);
   DEBUG_PRINT("Address is: ");
-  DEBUG_PRINTLN(name);
-  blePeripheral.setLocalName(name.c_str());
+  DEBUG_PRINTLN(BleLongName);
+  blePeripheral.setLocalName(BleLongName.c_str());
 
   // advertise the service
   blePeripheral.begin();  
@@ -75,6 +77,17 @@ void setup() {
 
 
 void loop() {
+  if (Serial) {
+    if (!serialConnected) {
+        serialConnected = true;
+        DEBUG_PRINT(F("LongName: "));
+        DEBUG_PRINTLN(BleLongName);
+    }
+  } else {
+    if (serialConnected)
+        serialConnected = false;
+  }
+
   // poll peripheral
   blePeripheral.poll();
 

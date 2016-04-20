@@ -51,11 +51,12 @@ void send_data(BLECharacteristic& characteristic, unsigned long timestamp_key, i
     DEBUG_PRINT(F("size: "));
     DEBUG_PRINT(stream.bytes_written);
     DEBUG_PRINTLN(F(" bytes."));
-    char b[4];
+    String s;
     for (unsigned int i = 0; i < stream.bytes_written; ++i) {
-      DEBUG_PRINT(String(buffer[i]));
+      s += String(buffer[i], HEX);
+      if ((i-1) % 2 == 0) s += " ";
     }
-    DEBUG_PRINTLN();
+    DEBUG_PRINTLN(s.c_str());
     */
     uint8_t size = stream.bytes_written;
     const uint8_t max_packet_size = BTLE_BUFFER_SIZE - 2;

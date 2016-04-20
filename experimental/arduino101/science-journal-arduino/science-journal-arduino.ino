@@ -6,14 +6,14 @@
 
 BLEPeripheral blePeripheral; // create peripheral instance
 BLEService whistlepunkService("555a0001-0aaa-467a-9538-01f0652c74e8"); // create service
-const char *value = "test";
+// Must be 20 char long to accomodate full-size messages.
+const char *value = "                     ";
 
-BLECharacteristic valueCharacteristic("555a0003-0aaa-467a-9538-01f0652c74e8", BLERead | BLENotify, value);
+BLECharacteristic valueCharacteristic("555a0003-0aaa-467a-9538-01f0652c74e8", BLENotify, value);
 
 #include "internal/ble_client.h"
 #include "services/ble/ble_service_gap_api.h"
-    ble_addr_t _local_bda;
-    char       _device_name[BLE_MAX_DEVICE_NAME+1];
+   
 
 void blePeripheralConnectHandler(BLECentral& central) {
   // central connected event handler
@@ -59,6 +59,8 @@ void setup() {
   valueCharacteristic.setEventHandler(BLESubscribed, bleNotificationSubscribeHandler);
   valueCharacteristic.setEventHandler(BLEUnsubscribed, bleNotificationUnsubscribeHandler);
   
+  ble_addr_t _local_bda;
+  char       _device_name[BLE_MAX_DEVICE_NAME+1];  
   ble_client_get_factory_config(&_local_bda, _device_name);
   String name = "Sci";
   name += String(_local_bda.addr[4], HEX);

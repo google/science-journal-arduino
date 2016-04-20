@@ -58,29 +58,17 @@ void setup() {
   blePeripheral.setEventHandler(BLEDisconnected, blePeripheralDisconnectHandler);
   valueCharacteristic.setEventHandler(BLESubscribed, bleNotificationSubscribeHandler);
   valueCharacteristic.setEventHandler(BLEUnsubscribed, bleNotificationUnsubscribeHandler);
-DEBUG_PRINTLN("Bluetooth device active, waiting for address...");
-    ble_client_get_factory_config(&_local_bda, _device_name);
-  DEBUG_PRINT("Type: ");
-  DEBUG_PRINTLN(_local_bda.type);
-  DEBUG_PRINT("Addr: ");
-  for (int i = 0; i <= BLE_ADDR_LEN; ++i) {
-    Serial.print(_local_bda.addr[i], HEX);
-  }
-    DEBUG_PRINTLN("");
-
+  
+  ble_client_get_factory_config(&_local_bda, _device_name);
   String name = "Sci";
   name += String(_local_bda.addr[4], HEX);
   name += String(_local_bda.addr[5], HEX);
-  
-
+  DEBUG_PRINT("Address is: ");
+  DEBUG_PRINTLN(name);
   blePeripheral.setLocalName(name.c_str());
 
   // advertise the service
   blePeripheral.begin();  
-  
-
-
-  DEBUG_PRINTLN("Bluetooth device active, waiting for connections...");
 }
 
 

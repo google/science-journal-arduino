@@ -17,7 +17,7 @@ To build and install this sketch,
   * If you are using the BLEND board, you need to add the Red Bear site to your Arduino IDE's preferences:
     - Navigate to the File->Preferences menu item
       ![File Preferences highlight](file_preferences.png "File preferences highlight")
-    - install the BLEND Device's definition to the Arduino IDE Preferences
+    - install the BLEND Device's definition to the Arduino IDE Preferences.  The [URL to add is[(https://redbearlab.github.io/arduino/package_redbearlab_index.json)
       ![Add RedBear Arduino package highlight](add_redbear_arduino_package.png "Add RedBear Arduino package highlight")
     - Add the BLEND Device to the Arduino IDE Board Manager
       ![File Boards Manager Highlight](file_boards_manager.png "File Boards Manager Highlight")

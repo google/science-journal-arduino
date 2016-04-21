@@ -17,6 +17,7 @@
 #include <stdio.h>
 #include <Arduino.h>
 #include "pb_encode.h"
+#include "debug_print.h"
 #include "goosci_utility.h"
 #include "sensor.pb.h"
 

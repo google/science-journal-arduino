@@ -13,15 +13,18 @@
  *  See the License for the specific language governing permissions and
  *  limitations under the License.
  */
+#ifndef _CONFIG_CHANGE_H_
+#define _CONFIG_CHANGE_H_
 
-#ifndef _GOOSCI_UTILITY_H_
-#define _GOOSCI_UTILITY_H_
-#include <CurieBLE.h>
+#include <pb_decode.h>
+enum PinType {
+  ANALOG = 1,
+  DIGITAL = 2,
+  VIRTUAL = 3,
+};
 
-// The serial port on leonardo will hang (UART buffer full) if the
-// serial port is not physically opened on the USB host.  This
-// function will block until the serial port is open.
-void wait_for_serial(void);
 
-void send_data(BLECharacteristic& characteristic, unsigned long timestamp, int value);
+bool decode_pin(pb_istream_t *stream, const pb_field_t *field, void * *arg);
+void handle(uint8_t* data, int8_t length);
+
 #endif

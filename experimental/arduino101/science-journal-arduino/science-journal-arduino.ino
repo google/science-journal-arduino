@@ -17,7 +17,12 @@
 #include <CurieBLE.h>
 #include "goosci_utility.h"
 #include "arduino_nrf_pins.h"
+#include "debug_print.h"
+#include "config_change.h"
 #include "heartbeat.h"
+#include "internal/ble_client.h"
+#include "services/ble/ble_service_gap_api.h"
+   
 #define SENSOR_PIN A0    // Input Pin to read from
 
 BLEPeripheral blePeripheral; // create peripheral instance
@@ -27,9 +32,9 @@ const char *value = "                     ";
 
 BLECharacteristic valueCharacteristic("555a0003-0aaa-467a-9538-01f0652c74e8", BLENotify, value);
 
-#include "internal/ble_client.h"
-#include "services/ble/ble_service_gap_api.h"
-   
+extern PinType pin_type;
+extern int pin;
+
 
 void blePeripheralConnectHandler(BLECentral& central) {
   // central connected event handler
@@ -95,8 +100,15 @@ void loop() {
   blePeripheral.poll();
 
   if (valueCharacteristic.subscribed()) {
-      int sensorValue = analogRead(SENSOR_PIN);
-      send_data(valueCharacteristic, millis(), sensorValue);
+    int sensorValue = 0;
+    if (pin_type == ANALOG) {
+      sensorValue = analogRead(pin);
+    } else if (pin_type == DIGITAL) {
+      sensorValue = digitalRead(pin);
+    } else {
+      sensorValue = 666;
+    }
+    send_data(valueCharacteristic, millis(), sensorValue);
   }
 #ifdef GOOSCI_DEVELOPER_MODE
   heartbeat();

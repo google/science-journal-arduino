@@ -101,7 +101,5 @@ void loop() {
 #ifdef GOOSCI_DEVELOPER_MODE
   heartbeat();
 #endif
-
-  heartbeat();
 }
 

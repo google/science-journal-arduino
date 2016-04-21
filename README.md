@@ -28,7 +28,7 @@ To build and install this sketch,
     - Tell the Arduino IDE you want to program a BLEND board
       ![Board BLEND Highlight](board_blend.png "Board BLEND Highlight")
     - Tell the Arduino IDE what port the BLEND board is on.  It will report itself as an "Arduino Leonardo"
-      ![Port Highlight](Port.png "Port Highlight")
+      ![Port Highlight](port.png "Port Highlight")
     - Click the checkmark to upload the firm
       ![Upload Firmware Highlight](upload_firmware.png "Upload Firmware Highlight")
     - When it succeeds, it will say "Done uploading"

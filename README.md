@@ -14,7 +14,7 @@ To build and install this sketch,
       (this location differs by Operating System) and select the file
       "nanopb-master.zip".
       ![Select nanopb-master.zip highlight](select_nanopb.png "Select nanopb-master.zip highlight")
-  * If you are using the BLEND board, you need to add to:
+  * If you are using the BLEND board, you need to add the Red Bear site to your Arduino IDE's preferences:
     - Navigate to the File->Preferences menu item
       ![File Preferences highlight](file_preferences.png "File preferences highlight")
     - install the BLEND Device's definition to the Arduino IDE Preferences
@@ -36,3 +36,4 @@ To build and install this sketch,
 
 You must install the following libraries
 * https://github.com/RedBearLab/ble-sdk-arduino
+- Follow the guide here https://github.com/RedBearLab/Blend/blob/master/Docs/LibraryManager.pdf

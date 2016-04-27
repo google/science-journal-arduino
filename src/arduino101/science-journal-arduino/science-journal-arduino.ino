@@ -26,7 +26,9 @@ BLEPeripheral blePeripheral; // create peripheral instance
 BLEService whistlepunkService("555a0001-0aaa-467a-9538-01f0652c74e8"); // create service
 // Must be 20 char long to accomodate full-size messages.
 const char *value = "                     ";
-BLECharacteristic valueCharacteristic("555a0003-0aaa-467a-9538-01f0652c74e8", BLENotify, value);
+const char *config = "                     ";
+BLECharacteristic valueCharacteristic( "555a0003-0aaa-467a-9538-01f0652c74e8", BLENotify, value);
+BLECharacteristic configCharacteristic("555a0010-0aaa-467a-9538-01f0652c74e8", BLEWrite, config);
 
 String BleLongName = "Sci";
 bool serialConnected = false;
@@ -57,6 +59,14 @@ void bleNotificationUnsubscribeHandler(BLECentral& central, BLECharacteristic& c
   DEBUG_PRINTLN(central.address());
 }
 
+void bleConfigChangeHandler(BLECentral& central, BLECharacteristic& characteristic) {
+  // config characteristic event handler
+  DEBUG_PRINTLN("config change event");
+  handle( (uint8_t*) config, 20);
+  DEBUG_PRINT("Pin: ");
+  DEBUG_PRINTLN(pin);
+}
+
 void setup() {
   wait_for_serial();
 
@@ -68,12 +78,14 @@ void setup() {
   // add service and characteristics
   blePeripheral.addAttribute(whistlepunkService);
   blePeripheral.addAttribute(valueCharacteristic);
+  blePeripheral.addAttribute(configCharacteristic);
 
   // assign event handlers for connected, disconnected to peripheral
   blePeripheral.setEventHandler(BLEConnected, blePeripheralConnectHandler);
   blePeripheral.setEventHandler(BLEDisconnected, blePeripheralDisconnectHandler);
   valueCharacteristic.setEventHandler(BLESubscribed, bleNotificationSubscribeHandler);
   valueCharacteristic.setEventHandler(BLEUnsubscribed, bleNotificationUnsubscribeHandler);
+  configCharacteristic.setEventHandler(BLEWritten, bleConfigChangeHandler);
 
   ble_addr_t _local_bda;
   char       _device_name[BLE_MAX_DEVICE_NAME+1];

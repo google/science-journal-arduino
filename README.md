@@ -14,5 +14,5 @@ To build and install this sketch,
       (this location differs by Operating System) and select the file
       "nanopb-master.zip".
       ![Select nanopb-master.zip highlight](docs/select_nanopb.png "Select nanopb-master.zip highlight")
-  * If you are using the BLEND board, ![follow the BLEND installation instructions](docs/BLEND.md "follow the BLEND installation instructions").
-  * If you are using the Arduino 101 board, ![follow the Arduino 101 installation instructions](docs/arduino101.md "follow the Arduino 101 installation instructions").
+  * If you are using the BLEND board, [follow the BLEND installation instructions](docs/BLEND.md)
+  * If you are using the Arduino 101 board, [follow the Arduino 101 installation instructions](docs/arduino101.md)

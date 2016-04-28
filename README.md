@@ -1,7 +1,7 @@
-The Arduino sketch used by the Science Journal Android application.
-This sketch is used to make an Arduino that has Bluetooth Low Energy
-(BLE) capabilities (such as the RedBear BLEND board) send data from
-its pins to Science Journal.
+The Arduino sketch used by the Science Journal Android application.  This sketch
+is used to make an Arduino that has Bluetooth Low Energy (BLE) capabilities
+(such as the RedBear BLEND board and the Arduino 101) send data from its pins to
+Science Journal.
 
 To build and install this sketch, 
   * [install the Arduino IDE](https://www.arduino.cc/en/Main/Software) on your desktop/laptop computer. The [Getting Started](https://www.arduino.cc/en/Guide/HomePage) page explains how to install the IDE.
@@ -14,26 +14,5 @@ To build and install this sketch,
       (this location differs by Operating System) and select the file
       "nanopb-master.zip".
       ![Select nanopb-master.zip highlight](docs/select_nanopb.png "Select nanopb-master.zip highlight")
-  * If you are using the BLEND board, you need to add the Red Bear site to your Arduino IDE's preferences:
-    - Navigate to the File->Preferences menu item
-      ![File Preferences highlight](docs/file_preferences.png "File preferences highlight")
-    - install the BLEND Device's definition to the Arduino IDE Preferences.  The [URL to add is[(https://redbearlab.github.io/arduino/package_redbearlab_index.json)
-      ![Add RedBear Arduino package highlight](docs/add_redbear_arduino_package.png "Add RedBear Arduino package highlight")
-    - Add the BLEND Device to the Arduino IDE Board Manager
-      ![File Boards Manager Highlight](docs/file_boards_manager.png "File Boards Manager Highlight")
-    - Enter RedBear as the search term and click on the "RedBear AVR" board
-      ![Boards Manager RedBear Search Highlight](docs/boards_manager_redbear_search.png "Boards Manager RedBear Search Highlight")
-    - Click on the "Install" button
-      ![Boards Manager RedBear Install Highlight](docs/boards_manager_redbear_install.png "Boards Manager RedBear Install Highlight")
-    - Tell the Arduino IDE you want to program a BLEND board
-      ![Board BLEND Highlight](docs/board_blend.png "Board BLEND Highlight")
-    - Tell the Arduino IDE what port the BLEND board is on.  It will report itself as an "Arduino Leonardo"
-      ![Port Highlight](docs/port.png "Port Highlight")
-    - Click the checkmark to upload the firm
-      ![Upload Firmware Highlight](docs/upload_firmware.png "Upload Firmware Highlight")
-    - When it succeeds, it will say "Done uploading"
-      ![Done uploading Highlight](docs/done_uploading.png "Done uploading Highlight")
-
-You must install the following libraries
-* https://github.com/RedBearLab/ble-sdk-arduino
-- Follow the guide here https://github.com/RedBearLab/Blend/blob/master/Docs/LibraryManager.pdf
+  * If you are using the BLEND board, [follow the BLEND installation instructions](docs/BLEND.md)
+  * If you are using the Arduino 101 board, [follow the Arduino 101 installation instructions](docs/arduino101.md)

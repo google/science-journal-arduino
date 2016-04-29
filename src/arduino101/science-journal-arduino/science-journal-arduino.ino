@@ -62,7 +62,7 @@ void bleNotificationUnsubscribeHandler(BLECentral& central, BLECharacteristic& c
 void bleConfigChangeHandler(BLECentral& central, BLECharacteristic& characteristic) {
   // config characteristic event handler
   DEBUG_PRINTLN("config change event");
-  handle( (uint8_t*) config, 20);
+  handle( (uint8_t*) characteristic.value(), characteristic.valueLength());
   DEBUG_PRINT("Pin: ");
   DEBUG_PRINTLN(pin);
 }

@@ -90,8 +90,8 @@ void setup() {
   ble_addr_t _local_bda;
   char       _device_name[BLE_MAX_DEVICE_NAME+1];
   ble_client_get_factory_config(&_local_bda, _device_name);
-  BleLongName += String(_local_bda.addr[4], HEX);
-  BleLongName += String(_local_bda.addr[5], HEX);
+  BleLongName += String(_local_bda.addr[0], HEX);
+  BleLongName += String(_local_bda.addr[1], HEX);
   DEBUG_PRINT("Address is: ");
   DEBUG_PRINTLN(BleLongName);
   blePeripheral.setLocalName(BleLongName.c_str());

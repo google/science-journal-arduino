@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <!--
     Copyright 2016 Google Inc. All Rights Reserved.
 
@@ -16,7 +17,6 @@
     Generic analog sensor for Whistlepunk.  Reads values from A0 and
     sends them to Whistlepunk via BLE.
  -->
-<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE AttributeServer>
 <Profile Version="1.3">
     <SetupId>0</SetupId>

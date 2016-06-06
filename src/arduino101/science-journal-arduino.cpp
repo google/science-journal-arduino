@@ -21,7 +21,7 @@
 #include "heartbeat.h"
 #include "internal/ble_client.h"
 #include "services/ble/ble_service_gap_api.h"
-   
+
 BLEPeripheral blePeripheral; // create peripheral instance
 BLEService whistlepunkService("555a0001-0aaa-467a-9538-01f0652c74e8"); // create service
 // Must be 20 char long to accomodate full-size messages.

@@ -17,6 +17,8 @@
  *  sends them to Whistlepunk via BLE.
  */
 
+#include "Arduino.h"
+
 #include "GoosciBleGatt.h"
 #include "goosci_utility.h"
 #include "arduino_nrf_pins.h"

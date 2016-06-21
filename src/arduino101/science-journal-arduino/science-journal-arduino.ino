@@ -30,7 +30,7 @@ const char *config = "                     ";
 BLECharacteristic valueCharacteristic( "555a0003-0aaa-467a-9538-01f0652c74e8", BLENotify, value);
 BLECharacteristic configCharacteristic("555a0010-0aaa-467a-9538-01f0652c74e8", BLEWrite, config);
 
-String BleLongName = "Sci";
+char BleLongName[8];
 bool serialConnected = false;
 extern PinType pin_type;
 extern int pin;
@@ -90,11 +90,10 @@ void setup() {
   ble_addr_t _local_bda;
   char       _device_name[BLE_MAX_DEVICE_NAME+1];
   ble_client_get_factory_config(&_local_bda, _device_name);
-  BleLongName += String(_local_bda.addr[0], HEX);
-  BleLongName += String(_local_bda.addr[1], HEX);
+  sprintf(BleLongName, "Sci%02x%02x", _local_bda.addr[0], _local_bda.addr[1]);
   DEBUG_PRINT("Address is: ");
   DEBUG_PRINTLN(BleLongName);
-  blePeripheral.setLocalName(BleLongName.c_str());
+  blePeripheral.setLocalName(BleLongName);
 
   // advertise the service
   blePeripheral.begin();

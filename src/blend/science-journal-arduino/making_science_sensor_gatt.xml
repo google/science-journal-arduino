@@ -158,6 +158,28 @@
             <PeriodForReadingThisCharacteristic>0</PeriodForReadingThisCharacteristic>
             <PeriodForProperties/>
         </Characteristic>
+        <Characteristic>
+            <Name>Protocol Version</Name>
+            <Uuid BaseUUID="555a00000aaa467a953801f0652c74e8" BaseUUIDName="Google Base UUID">0011</Uuid>
+            <DefaultValue>00</DefaultValue>
+            <UsePresentationFormat>1</UsePresentationFormat>
+            <MaxDataLength>2</MaxDataLength>
+            <AttributeLenType>1</AttributeLenType>
+            <ForceOpen>false</ForceOpen>
+            <ForceEncryption>false</ForceEncryption>
+            <Properties>
+                <WriteWithoutResponse>false</WriteWithoutResponse>
+                <Write>false</Write>
+                <Notify>false</Notify>
+                <Indicate>false</Indicate>
+                <Broadcast>false</Broadcast>
+            </Properties>
+            <SetPipe>false</SetPipe>
+            <AckIsAuto>false</AckIsAuto>
+            <PresentationFormatDescriptor Value="0000" Exponent="0" Format="6" NameSpace="01" Unit="0000"/>
+            <PeriodForReadingThisCharacteristic>0</PeriodForReadingThisCharacteristic>
+            <PeriodForProperties/>
+        </Characteristic>
     </Service>
     <Service Type="local" PrimaryService="true">
         <Name>Device Information</Name>

@@ -1,22 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--
-    Copyright 2016 Google Inc. All Rights Reserved.
-
-    Licensed under the Apache License, Version 2.0 (the "License");
-    you may not use this file except in compliance with the License.
-    You may obtain a copy of the License at
-
-        http://www.apache.org/licenses/LICENSE-2.0
-
-    Unless required by applicable law or agreed to in writing, software
-    distributed under the License is distributed on an "AS IS" BASIS,
-    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-    See the License for the specific language governing permissions and
-    limitations under the License.
-
-    Generic analog sensor for Whistlepunk.  Reads values from A0 and
-    sends them to Whistlepunk via BLE.
- -->
 <!DOCTYPE AttributeServer>
 <Profile Version="1.3">
     <SetupId>0</SetupId>
@@ -160,9 +142,9 @@
         </Characteristic>
         <Characteristic>
             <Name>Protocol Version</Name>
-            <Uuid BaseUUID="555a00000aaa467a953801f0652c74e8" BaseUUIDName="Google Base UUID">0011</Uuid>
-            <DefaultValue>00</DefaultValue>
-            <UsePresentationFormat>1</UsePresentationFormat>
+            <Uuid BaseUUID="555a00000aaa467a953801f0652c74e8" BaseUUIDName="Google Base UUID">0012</Uuid>
+            <DefaultValue></DefaultValue>
+            <UsePresentationFormat>0</UsePresentationFormat>
             <MaxDataLength>2</MaxDataLength>
             <AttributeLenType>1</AttributeLenType>
             <ForceOpen>false</ForceOpen>
@@ -174,7 +156,7 @@
                 <Indicate>false</Indicate>
                 <Broadcast>false</Broadcast>
             </Properties>
-            <SetPipe>false</SetPipe>
+            <SetPipe>true</SetPipe>
             <AckIsAuto>false</AckIsAuto>
             <PresentationFormatDescriptor Value="0000" Exponent="0" Format="6" NameSpace="01" Unit="0000"/>
             <PeriodForReadingThisCharacteristic>0</PeriodForReadingThisCharacteristic>

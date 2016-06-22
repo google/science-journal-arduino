@@ -59,7 +59,6 @@ void loop() {
     if (serialConnected)
       serialConnected = false;
   }
-
   goosciBle.pollACI();
   if (goosciBle.isReadyToSend()) {
     int sensorValue = 0;

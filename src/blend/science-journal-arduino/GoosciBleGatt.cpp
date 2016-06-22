@@ -127,6 +127,12 @@ void initLocalData(void) {
     lib_aci_set_local_data(&aci_state, PIPE_DEVICE_INFORMATION_MODEL_NUMBER_STRING_BROADCAST,
 			   (unsigned char *)longName, 8);
   }
+  //const uint16_t version = goosci_Version_Version_LATEST;
+  //const uint16_t version = 0x01020304;
+  char* version = "ABCD";
+  lib_aci_set_local_data(&aci_state, PIPE_GOOSCI_SENSOR_PROTOCOL_VERSION_SET,
+         (unsigned char *)version, 4);
+  
 }
 
 /**************************************************************************
@@ -396,6 +402,7 @@ void GoosciBleGatt::pollACI() {
           lib_aci_set_local_data(
               &aci_state, PIPE_DEVICE_INFORMATION_MODEL_NUMBER_STRING_BROADCAST,
               (unsigned char *)longName, 8);
+  
           DEBUG_PRINT(F("Advertising starting for "));
           DEBUG_PRINTLN(deviceName);
           lib_aci_connect(adTimeout, adInterval);

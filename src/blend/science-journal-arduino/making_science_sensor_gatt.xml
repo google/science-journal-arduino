@@ -142,8 +142,8 @@
         </Characteristic>
         <Characteristic>
             <Name>Protocol Version</Name>
-            <Uuid BaseUUID="555a00000aaa467a953801f0652c74e8" BaseUUIDName="Google Base UUID">0012</Uuid>
-            <DefaultValue></DefaultValue>
+            <Uuid BaseUUID="555a00000aaa467a953801f0652c74e8" BaseUUIDName="Google Base UUID">0011</Uuid>
+            <DefaultValue>2048</DefaultValue>
             <UsePresentationFormat>0</UsePresentationFormat>
             <MaxDataLength>2</MaxDataLength>
             <AttributeLenType>1</AttributeLenType>

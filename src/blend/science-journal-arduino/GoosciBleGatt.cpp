@@ -127,10 +127,6 @@ void initLocalData(void) {
     lib_aci_set_local_data(&aci_state, PIPE_DEVICE_INFORMATION_MODEL_NUMBER_STRING_BROADCAST,
 			   (unsigned char *)longName, 8);
   }
-  const uint16_t version = goosci_Version_Version_LATEST;
-  lib_aci_set_local_data(&aci_state, PIPE_GOOSCI_SENSOR_PROTOCOL_VERSION_SET,
-         (unsigned char *)version, 4);
-  
 }
 
 /**************************************************************************

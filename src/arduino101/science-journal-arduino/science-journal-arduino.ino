@@ -30,9 +30,9 @@ const char *value = "                     ";
 const char *config = "                     ";
 BLECharacteristic valueCharacteristic( "555a0003-0aaa-467a-9538-01f0652c74e8", BLENotify, value);
 BLECharacteristic configCharacteristic("555a0010-0aaa-467a-9538-01f0652c74e8", BLEWrite, config);
-const unsigned int version = goosci_Version_Version_LATEST;
+const unsigned short version = goosci_Version_Version_LATEST;
 
-BLEUnsignedIntCharacteristic versionCharacteristic("555a0011-0aaa-467a-9538-01f0652c74e8", BLERead);
+BLEUnsignedShortCharacteristic versionCharacteristic("555a0011-0aaa-467a-9538-01f0652c74e8", BLERead);
 
 char BleLongName[8];
 bool serialConnected = false;

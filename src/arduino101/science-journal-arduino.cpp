@@ -21,6 +21,7 @@
 #include "heartbeat.h"
 #include "internal/ble_client.h"
 #include "services/ble/ble_service_gap_api.h"
+#include "sensor.pb.h"
 
 BLEPeripheral blePeripheral; // create peripheral instance
 BLEService whistlepunkService("555a0001-0aaa-467a-9538-01f0652c74e8"); // create service
@@ -29,8 +30,11 @@ const char *value = "                     ";
 const char *config = "                     ";
 BLECharacteristic valueCharacteristic( "555a0003-0aaa-467a-9538-01f0652c74e8", BLENotify, value);
 BLECharacteristic configCharacteristic("555a0010-0aaa-467a-9538-01f0652c74e8", BLEWrite, config);
+const unsigned short version = goosci_Version_Version_LATEST;
 
-String BleLongName = "Sci";
+BLEUnsignedShortCharacteristic versionCharacteristic("555a0011-0aaa-467a-9538-01f0652c74e8", BLERead);
+
+char BleLongName[8];
 bool serialConnected = false;
 extern PinType pin_type;
 extern int pin;
@@ -79,6 +83,8 @@ void setup() {
   blePeripheral.addAttribute(whistlepunkService);
   blePeripheral.addAttribute(valueCharacteristic);
   blePeripheral.addAttribute(configCharacteristic);
+  blePeripheral.addAttribute(versionCharacteristic);
+  versionCharacteristic.setValue(version);
 
   // assign event handlers for connected, disconnected to peripheral
   blePeripheral.setEventHandler(BLEConnected, blePeripheralConnectHandler);
@@ -90,11 +96,10 @@ void setup() {
   ble_addr_t _local_bda;
   char       _device_name[BLE_MAX_DEVICE_NAME+1];
   ble_client_get_factory_config(&_local_bda, _device_name);
-  BleLongName += String(_local_bda.addr[0], HEX);
-  BleLongName += String(_local_bda.addr[1], HEX);
+  sprintf(BleLongName, "Sci%02x%02x", _local_bda.addr[0], _local_bda.addr[1]);
   DEBUG_PRINT("Address is: ");
   DEBUG_PRINTLN(BleLongName);
-  blePeripheral.setLocalName(BleLongName.c_str());
+  blePeripheral.setLocalName(BleLongName);
 
   // advertise the service
   blePeripheral.begin();

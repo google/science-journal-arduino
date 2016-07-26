@@ -396,6 +396,7 @@ void GoosciBleGatt::pollACI() {
           lib_aci_set_local_data(
               &aci_state, PIPE_DEVICE_INFORMATION_MODEL_NUMBER_STRING_BROADCAST,
               (unsigned char *)longName, 8);
+  
           DEBUG_PRINT(F("Advertising starting for "));
           DEBUG_PRINTLN(deviceName);
           lib_aci_connect(adTimeout, adInterval);

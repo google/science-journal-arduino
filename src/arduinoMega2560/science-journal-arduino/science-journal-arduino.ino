@@ -13,21 +13,21 @@
  *  See the License for the specific language governing permissions and
  *  limitations under the License.
  */
-#include <BLEPeripheral.h>
+#include "BLEPeripheralGetAddress.h"
 #include "goosci_utility.h"
 #include "arduino_nrf_pins.h"
 #include "debug_print.h"
 #include "config_change.h"
 #include "heartbeat.h"
-//#include "internal/ble_client.h"
-//#include "services/ble/ble_service_gap_api.h"
 #include "sensor.pb.h"
 
 #define BLE_REQ   9
 #define BLE_RDY   8
 #define BLE_RST   2
 
-BLEPeripheral blePeripheral(BLE_REQ, BLE_RDY, BLE_RST); // create peripheral instance
+bool have_address = false;
+unsigned char *address = NULL;
+BLEPeripheralGetAddress blePeripheral(BLE_REQ, BLE_RDY, BLE_RST); // create peripheral instance
 
 BLEService whistlepunkService("555a0001-0aaa-467a-9538-01f0652c74e8"); // create service
 // Must be 20 char long to accomodate full-size messages.
@@ -79,8 +79,6 @@ void bleConfigChangeHandler(BLECentral& central, BLECharacteristic& characterist
 void setup() {
   wait_for_serial();
 
-  // set the local name peripheral advertises
-  blePeripheral.setLocalName("Sanketh");
   // set the UUID for the service this peripheral advertises:
   blePeripheral.setAdvertisedServiceUuid(whistlepunkService.uuid());
 
@@ -101,6 +99,17 @@ void setup() {
 
   // advertise the service
   blePeripheral.begin();
+  while (true) {
+    blePeripheral.poll();
+    if (blePeripheral.haveAddress()) {
+      have_address = true;
+      address = blePeripheral.getAddress();
+      sprintf(BleLongName, "Sci%02x%02x", address[0], address[1]);
+      blePeripheral.setLocalName(BleLongName);
+      blePeripheral.begin();
+      break;
+    }
+  }
 }
 
 

@@ -30,7 +30,7 @@ class GoosciBleGatt {
     void setSensorConfig(const char *config, int size);
     bool isInitialized(void);
     bool isReadyToSend(void);
-    bool sendData(const char *buffer, int size);
+    bool sendData(const char *buffer, int32_t size);
 };
 
 #endif

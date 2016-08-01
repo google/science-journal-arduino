@@ -29,7 +29,7 @@ void wait_for_serial(void) {
 #else
   Serial.begin(115200);
 #endif
-#if defined(__ARDUINO_ARC__) 
+#if defined(__ARDUINO_ARC__)
   Serial.begin(115200);
 #endif
 }
@@ -40,11 +40,14 @@ uint8_t buffer[BUFFER_LEN];
 pb_ostream_t stream;
 
 #define BTLE_BUFFER_SIZE 20
-
 int packets = 0;
-uint8_t packet[BTLE_BUFFER_SIZE];
 
+#if defined(__AVR_ATmega32U4__)
+void send_data(GoosciBleGatt &goosciBle, unsigned long timestamp_key, int value) {
+#elif defined(__ARDUINO_ARC__)
+uint8_t packet[BTLE_BUFFER_SIZE];
 void send_data(BLECharacteristic& characteristic, unsigned long timestamp_key, int value) {
+#endif
   stream = pb_ostream_from_buffer(buffer, BUFFER_LEN);
 
   sd.timestamp_key = timestamp_key; // timestamp
@@ -74,11 +77,14 @@ void send_data(BLECharacteristic& characteristic, unsigned long timestamp_key, i
     }
     DEBUG_PRINTLN(s.c_str());
     */
+#if defined(__AVR_ATmega32U4__)
+    goosciBle.sendData((const char *)buffer, stream.bytes_written);
+#else
     uint8_t size = stream.bytes_written;
     const uint8_t max_packet_size = BTLE_BUFFER_SIZE - 2;
     /* Force size/max_packet_size to round up */
     uint8_t num_packets = (size + max_packet_size - 1) / max_packet_size;
-    
+
 
     for (uint8_t ii = 0; ii < num_packets; ii++) {
       bool is_last_packet = ((num_packets - 1) == ii);
@@ -91,13 +97,14 @@ void send_data(BLECharacteristic& characteristic, unsigned long timestamp_key, i
       packet[0] = current_packet_size;
       packet[1] = is_last_packet;
       memcpy((void*)(packet + 2), buffer + ii * max_packet_size, current_packet_size);
-      
+
       /* If send fails then we give up */
       if (!characteristic.setValue(packet, current_packet_size+2)) {
         DEBUG_PRINTLN("Send of packet failed.");
         break;
       }
-    }        
+    }
+#endif
   }
 }
 

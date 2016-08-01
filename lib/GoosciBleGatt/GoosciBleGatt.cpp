@@ -82,7 +82,7 @@ bool GoosciBleGatt::isReadyToSend() {
 
 uint8_t packet[BTLE_BUFFER_SIZE];
 
-bool GoosciBleGatt::sendData(const char *buffer, int size) {
+bool GoosciBleGatt::sendData(const char *buffer, int32_t size) {
   const uint8_t max_packet_size = BTLE_BUFFER_SIZE - 2;
   /* Force size/max_packet_size to round up */
   uint8_t num_packets = (size + max_packet_size - 1) / max_packet_size;

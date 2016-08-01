@@ -26,7 +26,7 @@
   void send_data(GoosciBleGatt &goosciBle, unsigned long timestamp, int value);
 #endif
 
-#if defined(ARDUINO_AVR_MEGA2560)
+#if defined(ARDUINO_AVR_MEGA2560) || defined(ARDUINO_AVR_UNO)
   #include <BLEPeripheral.h>
   void send_data(BLECharacteristic& characteristic, unsigned long timestamp, int value);
 #endif

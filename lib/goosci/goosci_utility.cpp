@@ -44,7 +44,7 @@ int packets = 0;
 
 #if defined(__AVR_ATmega32U4__)
 void send_data(GoosciBleGatt &goosciBle, unsigned long timestamp_key, int value) {
-#elif defined(__ARDUINO_ARC__) || defined(ARDUINO_AVR_MEGA2560)
+#elif defined(__ARDUINO_ARC__) || defined(ARDUINO_AVR_MEGA2560) || defined(ARDUINO_AVR_UNO)
 uint8_t packet[BTLE_BUFFER_SIZE];
 void send_data(BLECharacteristic& characteristic, unsigned long timestamp_key, int value) {
 #endif

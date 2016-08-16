@@ -23,3 +23,8 @@ Open Science Journal is licensed under the [Apache 2 license][license].
 ## More
 
 Science Journal is brought to you by [Making & Science][making-science], an initiative by Google. Open Science Journal is not an official Google product.
+
+[play-store]: https://play.google.com/store/apps/details?id=com.google.android.apps.whistlepunk
+[contributing]: https://github.com/google/science-journal-arduino/blob/master/CONTRIBUTING
+[license]: https://github.com/google/science-journal-arduino/blob/master/LICENSE
+[making-science]: https://makingscience.withgoogle.com

@@ -27,4 +27,4 @@ Science Journal is brought to you by [Making & Science][making-science], an init
 [contributing]: https://github.com/google/science-journal-arduino/blob/master/CONTRIBUTING
 [license]: https://github.com/google/science-journal-arduino/blob/master/LICENSE
 [making-science]: https://makingscience.withgoogle.com
-[guide]: https://github.com/google/science-journal-arduino/guide
+[guide]: https://github.com/google/science-journal-arduino/tree/master/guide

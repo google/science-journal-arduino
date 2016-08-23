@@ -5,8 +5,8 @@
 
 * Once downloaded, unzip using your favorite tool if needed.
 
-* Download and install [PlatformIO](http://www.platformio.org) for your OS.  After installation you should be greeted with the Home screen.
-![PlatformIO Home](PlatformIO.png) 
+* Download and install [PlatformIO IDE](http://www.platformio.org) for your OS.  After installation you should be greeted with the Home screen.
+![PlatformIO Home](images/PlatformIO.png)
 
 * From this screen select "Import Arduino Project" and select the path to your checkout.  After a few seconds you should be greeted with a screen like below.
 ![](images/FolderOpened.png "PIO Home")

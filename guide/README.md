@@ -25,7 +25,7 @@
 * Now launch the built in **Terminal**
 ![](Terminal.png "Terminal")
 
-* From the terminal upload the firmware to your device.  You need to specify which device you want to use.  The current supported board environments are **arduino101**, **blend**, and **mega2560**.  If PlatformIO has trouble autodetecting your serial port, please refer to [documentation](http://docs.platformio.org/en/stable/).
+* From the terminal upload the firmware to your device.  You need to specify which board you are using.  The current supported board environment identifiers are [arduino101](https://www.arduino.cc/en/Main/ArduinoBoard101), [blend](http://redbearlab.com/blend/), or [mega2560](https://www.arduino.cc/en/Main/ArduinoBoardMega2560) .  If PlatformIO has trouble autodetecting your serial port, please refer to [documentation](http://docs.platformio.org/en/stable/).
 
 	pio run -e <ENV> --target upload
 

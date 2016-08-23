@@ -19,7 +19,7 @@
 ![](Building.png "Building")
 
 	If everything has worked according to plan you should see something like this for a little bit and then be returned to the project screen.
-	![](/usr/local/google/home/uriah/goosci/science-journal-arduino/doc/Build_Success.png) 
+![](Build_Success.png "Build Success")
 
 
 * Now launch the built in **Terminal**

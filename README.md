@@ -9,9 +9,7 @@ the Uno.
 ## Building the firmware
 
 This project uses [Platform IO](http://platformio.org/get-started).
-After installing PlatformIO, upload to a specific board using:
-
-	platformio -f -c vim run --target upload -e mega2560
+Please refer to [Build Guide][guide]
 
 ## Contributing
 
@@ -29,3 +27,4 @@ Science Journal is brought to you by [Making & Science][making-science], an init
 [contributing]: https://github.com/google/science-journal-arduino/blob/master/CONTRIBUTING
 [license]: https://github.com/google/science-journal-arduino/blob/master/LICENSE
 [making-science]: https://makingscience.withgoogle.com
+[guide]: https://github.com/google/science-journal-arduino/guide

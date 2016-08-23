@@ -27,7 +27,7 @@
 
 * From the terminal upload the firmware to your device.  You need to specify which board you are using.  The current supported board environment identifiers are [arduino101](https://www.arduino.cc/en/Main/ArduinoBoard101), [blend](http://redbearlab.com/blend/), or [mega2560](https://www.arduino.cc/en/Main/ArduinoBoardMega2560) .  If PlatformIO has trouble autodetecting your serial port, please refer to [documentation](http://docs.platformio.org/en/stable/).
 
-	pio run -e <ENV> --target upload
+		pio run -e <ENV> --target upload
 
 ![](PIO_Upload_Start.png "Upload Start")
 

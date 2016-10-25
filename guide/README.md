@@ -31,7 +31,8 @@
 
 ![](images/PIO_Upload_Start.png "Upload Start")
 
-* If everything went according to plan, you should be greeted with a screen similar to below.
+* If everything went according to plan, you should be greeted with a screen similar to below.  **[If you're on Windows and receiving an error "Cannot open DFU device 8087:0aba", click here](101.md)**
+
 ![](images/PIO_Upload_Success.png "Upload Success")
 
 * Just to verify that the firmware took, let's connect to it via Serial Monitor.

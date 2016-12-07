@@ -14,12 +14,19 @@ Internet access
 If you're on Windows and using an [Arduino 101](https://www.arduino.cc/en/Main/ArduinoBoard101), first you need to install the Arduino IDE and follow these substeps.
 
 * Launch the IDE
+
 ![](images/IDE.png "Arduino IDE")
+
 * Load the Boards Manager via Tools -> Board: ... -> Boards Manager...
+
 ![](images/Launch_Board_Manager.png "Boards Manager")
+
 * Install the Intel Curie boards files and drivers by searching for "curie" and clicking install. During the install you will be asked to authorize installation of a few packages, approve them.
+
 ![](images/Install_Curie.png "Install Curie")
+
 * Once completed
+
 ![](images/Curie_Installed.png "Curie Installed")
 
 ***
@@ -27,6 +34,7 @@ If you're on Windows and using an [Arduino 101](https://www.arduino.cc/en/Main/A
 **All Other users start here:**
 
 How to:
+
 1. **Download PlatformIO IDE and install on your computer.**
 You will need a free piece of software called PlatformIO IDE. You can download this [here](http://platformio.org/get-started). Note, if you have a Mac, you will be downloading this outside the App store so you might need to [enable third party developer access](https://support.apple.com/kb/PH21769?locale=en_US) to open.
 2. **Download the Science Journal firmware [Science Journal firmware](https://github.com/google/science-journal-arduino)  from GitHub.**

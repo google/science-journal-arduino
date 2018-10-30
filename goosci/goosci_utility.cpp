@@ -85,6 +85,7 @@ void send_data(BLECharacteristic& characteristic, unsigned long timestamp_key, i
     /* Force size/max_packet_size to round up */
     uint8_t num_packets = (size + max_packet_size - 1) / max_packet_size;
 
+    Serial.println(num_packets);
 
     for (uint8_t ii = 0; ii < num_packets; ii++) {
       bool is_last_packet = ((num_packets - 1) == ii);

@@ -17,6 +17,14 @@
 #ifndef _GOOSCI_H_
 #define _GOOSCI_H_
 
+#ifdef ARDUINO_ARCH_SAMD
+#include <ArduinoBLE.h>
+#elif defined(ARDUINO_ARCH_ARC32)
+#include <CurieBLE.h>
+#else
+#error "Unsupported board!"
+#endif
+
 class GoosciClass {
 public:
   GoosciClass();
@@ -25,6 +33,22 @@ public:
   int begin();
   void loop();
   void end();
+
+private:
+  static void bleConnectHandler(BLEDevice central);
+  static void bleDisconnectHandler(BLEDevice central);
+  static void bleValueSubscribeHandler(BLEDevice central, BLECharacteristic characteristic);
+  static void bleValueUnubscribeHandler(BLEDevice central, BLECharacteristic characteristic);
+  static void bleConfigWriteHandler(BLEDevice central, BLECharacteristic characteristic);
+
+private:
+  unsigned long                  _previousMillis;
+  String                         _name;
+
+  BLEService                     _whistlepunkService;
+  BLECharacteristic              _valueCharacteristic;
+  BLECharacteristic              _configCharacteristic;
+  BLEUnsignedShortCharacteristic _versionCharacteristic;
 };
 
 extern GoosciClass Goosci;

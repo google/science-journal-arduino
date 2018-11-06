@@ -21,6 +21,11 @@
   void send_data(BLECharacteristic& characteristic, unsigned long timestamp, int value);
 #endif
 
+#if defined(ARDUINO_ARCH_SAMD)
+  #include <ArduinoBLE.h>
+  void send_data(BLECharacteristic& characteristic, unsigned long timestamp, int value);
+#endif
+
 #if defined(__AVR_ATmega32U4__)
   #include "GoosciBleGatt.h"
   void send_data(GoosciBleGatt &goosciBle, unsigned long timestamp, int value);

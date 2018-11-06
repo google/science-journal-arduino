@@ -18,7 +18,6 @@
 
 void setup() {
   Serial.begin(9600);
-  while (!Serial);
 
   if (!Goosci.begin()) {
     Serial.println("Failed to initialize Goosci library!");

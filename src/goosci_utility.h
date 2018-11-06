@@ -26,19 +26,4 @@
   void send_data(BLECharacteristic& characteristic, unsigned long timestamp, int value);
 #endif
 
-#if defined(__AVR_ATmega32U4__)
-  #include "GoosciBleGatt.h"
-  void send_data(GoosciBleGatt &goosciBle, unsigned long timestamp, int value);
-#endif
-
-#if defined(ARDUINO_AVR_MEGA2560) || defined(ARDUINO_AVR_UNO)
-  #include <BLEPeripheral.h>
-  void send_data(BLECharacteristic& characteristic, unsigned long timestamp, int value);
-#endif
-
-// The serial port on leonardo will hang (UART buffer full) if the
-// serial port is not physically opened on the USB host.  This
-// function will block until the serial port is open.
-void wait_for_serial(void);
-
 #endif

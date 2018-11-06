@@ -20,20 +20,6 @@
 #include "goosci_utility.h"
 #include "sensor.pb.h"
 
-void wait_for_serial(void) {
-#if defined(__AVR_ATmega32U4__) || defined(__ARDUINO_ARC__)
-  // Wait for 5 seconds to see if the USB Serial connects
-  // We don't need to call Serial.begin because the 32u4 auto detects
-  // a serial connection and baud rate for us.
-  delay(5000);
-#else
-  Serial.begin(115200);
-#endif
-#if defined(__ARDUINO_ARC__) || defined(ARDUINO_ARCH_SAMD)
-  Serial.begin(115200);
-#endif
-}
-
 goosci_SensorData sd  = goosci_SensorData_init_zero;
 const int BUFFER_LEN=256;
 uint8_t buffer[BUFFER_LEN];
@@ -42,12 +28,8 @@ pb_ostream_t stream;
 #define BTLE_BUFFER_SIZE 20
 int packets = 0;
 
-#if defined(__AVR_ATmega32U4__)
-void send_data(GoosciBleGatt &goosciBle, unsigned long timestamp_key, int value) {
-#elif defined(__ARDUINO_ARC__) || defined(ARDUINO_AVR_MEGA2560) || defined(ARDUINO_AVR_UNO) || defined(ARDUINO_ARCH_SAMD)
 uint8_t packet[BTLE_BUFFER_SIZE];
 void send_data(BLECharacteristic& characteristic, unsigned long timestamp_key, int value) {
-#endif
   stream = pb_ostream_from_buffer(buffer, BUFFER_LEN);
 
   sd.timestamp_key = timestamp_key; // timestamp
@@ -77,9 +59,7 @@ void send_data(BLECharacteristic& characteristic, unsigned long timestamp_key, i
     }
     DEBUG_PRINTLN(s.c_str());
     */
-#if defined(__AVR_ATmega32U4__)
-    goosciBle.sendData((const char *)buffer, stream.bytes_written);
-#else
+
     uint8_t size = stream.bytes_written;
     const uint8_t max_packet_size = BTLE_BUFFER_SIZE - 2;
     /* Force size/max_packet_size to round up */
@@ -105,7 +85,6 @@ void send_data(BLECharacteristic& characteristic, unsigned long timestamp_key, i
         break;
       }
     }
-#endif
   }
 }
 

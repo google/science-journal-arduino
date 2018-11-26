@@ -6,11 +6,6 @@ send data from its pins to Science Journal.  The arduinoUno firmware
 is provided for reference, but does not work because of limited RAM on
 the Uno.
 
-## Building the firmware
-
-This project uses [Platform IO](http://platformio.org/get-started).
-Please refer to [Build Guide][guide]
-
 ## Contributing
 
 Please read our [guidelines for contributors][contributing].

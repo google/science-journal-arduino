@@ -30,7 +30,7 @@ unsigned char *address = NULL;
 BLEPeripheralGetAddress blePeripheral(BLE_REQ, BLE_RDY, BLE_RST); // create peripheral instance
 
 BLEService whistlepunkService("555a0001-0aaa-467a-9538-01f0652c74e8"); // create service
-// Must be 20 char long to accomodate full-size messages.
+// Must be 20 char long to accommodate full-size messages.
 const char *value = "                     ";
 const char *config = "                     ";
 BLECharacteristic valueCharacteristic( "555a0003-0aaa-467a-9538-01f0652c74e8", BLENotify, value);

@@ -1,5 +1,5 @@
 /*
- *  Copyright 2016 Google Inc. All Rights Reserved.
+ *  Copyright 2018 Google Inc. All Rights Reserved.
  *
  *  Licensed under the Apache License, Version 2.0 (the "License");
  *  you may not use this file except in compliance with the License.
@@ -13,4 +13,19 @@
  *  See the License for the specific language governing permissions and
  *  limitations under the License.
  */
-bool heartbeat(void);
+
+#include <Goosci.h>
+
+void setup() {
+  Serial.begin(9600);
+
+  if (!Goosci.begin()) {
+    Serial.println("Failed to initialize Goosci library!");
+
+    while (1);
+  }
+}
+
+void loop() {
+  Goosci.loop();
+}

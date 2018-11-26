@@ -13,24 +13,17 @@
  *  See the License for the specific language governing permissions and
  *  limitations under the License.
  */
-#ifndef _GOOSCI_BLE_GATT_H_
-#define _GOOSCI_BLE_GATT_H_
+#ifndef _GOOSCI_UTILITY_H_
+#define _GOOSCI_UTILITY_H_
 
-class GoosciBleGatt {
-  public:
-    GoosciBleGatt(int req, int rdy, int rst);
-    bool begin(int advTimeout = 180, int advInterval = 0x0050);
-    void get_address();
-    void print_address();
-    void pollACI (void);
-    void getDeviceName(char *name);
-    void setDeviceName(const char *deviceName);
-    void setLongName(const char *deviceName);
-    void setDeviceDescription(const char *desc);
-    void setSensorConfig(const char *config, int size);
-    bool isInitialized(void);
-    bool isReadyToSend(void);
-    bool sendData(const char *buffer, int32_t size);
-};
+#if defined(__ARDUINO_ARC__)
+  #include <CurieBLE.h>
+  void send_data(BLECharacteristic& characteristic, unsigned long timestamp, int value);
+#endif
+
+#if defined(ARDUINO_ARCH_SAMD)
+  #include <ArduinoBLE.h>
+  void send_data(BLECharacteristic& characteristic, unsigned long timestamp, int value);
+#endif
 
 #endif
